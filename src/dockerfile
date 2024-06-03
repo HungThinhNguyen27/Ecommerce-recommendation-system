@@ -6,5 +6,8 @@ ADD . /src
 
 RUN pip install -r requirements.txt
 
-# CMD ["uwsgi", "app.ini"]
 CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8080", "app:app"]
+
+# -w 4: This option specifies the number of worker processes Gunicorn should use. In this case, it's set to 4 worker processes.
+# -b 0.0.0.0:8080: This option binds Gunicorn to the specified address and port 
+# "app:app" : This specifies the module and application to run with Gunicorn. The format is module_name:application_name
